@@ -57,9 +57,9 @@ def post_page(post_pk):
                            len_comments=len_comments)
 
 
-@app.route('/search')
+@app.route('/search/')
 def search_word():
-    """Представление по маршруту /search
+    """Представление по маршруту /search/
 
     Из запроса берем строку и присваиваем ее к переменной substr.
     Обращаемся к функции с аргументом substr, получаем список словарей.
@@ -110,19 +110,19 @@ def api_post(post_pk):
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(error):
     """Обработчик запросов к несуществующим страницам.
 
     Возвращает ошибку и статус-код 404"""
-    return e, 404
+    return "Страница не найдена", 404
 
 
 @app.errorhandler(500)
-def page_not_found(e):
+def page_not_found(error):
     """Обработчик ошибок со стороны сервера.
 
     Возвращает ошибку и статус-код 500"""
-    return e, 500
+    return "Сервер не отвечает", 500
 
 
 if __name__ == "__main__":  # Условия для запуска приложения
